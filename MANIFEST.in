@@ -5,3 +5,5 @@ recursive-include examples *.json
 recursive-include assets *.svg *.html *.png
 recursive-include tests *.py
 recursive-include tools *.py
+
+include GOVERNANCE.md CODE_OF_CONDUCT.md ROADMAP.md RELEASING.md
