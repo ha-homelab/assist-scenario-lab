@@ -1,0 +1,4 @@
+- [Home](Home)
+- [Guide — English](Guide)
+- [Руководство — Русский](Guide-RU)
+- [Source](https://github.com/ha-homelab/assist-scenario-lab)
