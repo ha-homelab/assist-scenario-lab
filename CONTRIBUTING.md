@@ -13,3 +13,25 @@ Use invented identifiers and synthetic trials in fixtures. Do not upload raw rec
 ## Documentation
 
 `docs/en/guide.md` and `docs/ru/guide.md` are canonical. Their wiki copies replace image paths with public URLs. Keep both synchronized. SVGs come from `tools/render_docs.py`; edit the generator, regenerate, and review the image. MIT applies to original code, docs and diagrams.
+
+
+## Feedback and review
+
+Use [GitHub Issues](https://github.com/ha-homelab/assist-scenario-lab/issues) for bug reports,
+questions and enhancement proposals; existing issues and pull requests retain
+searchable discussion. Include the source revision, expected/actual behavior and
+a minimal synthetic reproducer. English reports are welcome. Security reports
+follow [SECURITY.md](SECURITY.md), and all participation follows our
+[Code of Conduct](CODE_OF_CONDUCT.md).
+
+Contributions are under the repository's MIT license. Submit only material you
+have the right to contribute. Follow Python PEP 8 and the repository's Ruff
+configuration. Every new major feature and behavior fix requires automated tests,
+including a negative or regression case; update the interface documentation and
+changelog in the same pull request. Run tests without Python optimization so
+assertions remain enabled. The maintainer reviews the diff, test evidence and
+open comments before a normal merge. Automated reviews assist this process.
+
+See [RELEASING.md](RELEASING.md) for build and source-version instructions,
+[GOVERNANCE.md](GOVERNANCE.md) for responsibilities, and
+[ROADMAP.md](ROADMAP.md) for planned work.

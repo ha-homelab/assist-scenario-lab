@@ -1,5 +1,7 @@
 # Assist Scenario Lab
 
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15565/badge)](https://www.bestpractices.dev/projects/15565)
+
 [English](README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Español](README.es.md)
 
 Evaluate recorded Home Assistant voice sessions without mistaking a completed API call for a correct action or an audible response. The CLI reads local JSON and writes reviewable text, JSON, HTML or JUnit. It does not connect to Home Assistant or control devices.
@@ -53,3 +55,10 @@ python3 tools/render_docs.py
 ```
 
 MIT licensed. Not an official Home Assistant project. Build a live collector separately with explicit recording consent; this package only evaluates supplied data.
+
+## Project maintenance
+
+See [Contributing](CONTRIBUTING.md), [Security](SECURITY.md),
+[Governance](GOVERNANCE.md), [Code of Conduct](CODE_OF_CONDUCT.md),
+[Roadmap](ROADMAP.md), [Source releases](RELEASING.md), and
+[Quality evidence](docs/quality.md).
