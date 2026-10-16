@@ -1,4 +1,4 @@
-- [Home](Home)
-- [Guide — English](Guide)
-- [Руководство — Русский](Guide-RU)
+- [Home](https://github.com/ha-homelab/assist-scenario-lab/wiki/Home)
+- [Guide — English](https://github.com/ha-homelab/assist-scenario-lab/wiki/Guide)
+- [Руководство — Русский](https://github.com/ha-homelab/assist-scenario-lab/wiki/Guide-RU)
 - [Source](https://github.com/ha-homelab/assist-scenario-lab)

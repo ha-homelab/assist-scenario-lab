@@ -1,6 +1,6 @@
 # Assist Scenario Lab wiki
 
-[English guide](Guide) · [Русское руководство](Guide-RU)
+[English guide](https://github.com/ha-homelab/assist-scenario-lab/wiki/Guide) · [Русское руководство](https://github.com/ha-homelab/assist-scenario-lab/wiki/Guide-RU)
 
 Offline voice evidence evaluation, version 0.1.0. All bundled data is synthetic; no physical satellite benchmark is claimed.
 
