@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assist-scenario-lab"
+version = "0.1.0"
+description = "Offline evidence-aware scenario evaluation for Home Assistant voice satellites"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "HA Homelab contributors"}]
+classifiers = ["Programming Language :: Python :: 3", "Topic :: Home Automation"]
+
+[project.scripts]
+assist-lab = "assist_scenario_lab.cli:main"
+
+[project.urls]
+Repository = "https://github.com/ha-homelab/assist-scenario-lab"
+Documentation = "https://github.com/ha-homelab/assist-scenario-lab/wiki"
+Issues = "https://github.com/ha-homelab/assist-scenario-lab/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+assist_scenario_lab = ["locales/*.json"]

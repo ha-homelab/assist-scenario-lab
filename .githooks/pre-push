@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+python3 tools/publication_check.py
+command -v gitleaks >/dev/null 2>&1 || { echo 'Install Gitleaks before pushing public source.' >&2; exit 1; }
+gitleaks git --log-opts='--all --full-history' --redact=100 --ignore-gitleaks-allow --no-banner

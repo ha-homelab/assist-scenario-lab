@@ -1,0 +1,54 @@
+{
+  "schema": "assist-scenario-lab/v1",
+  "synthetic": true,
+  "requirements": {
+    "intent_correct": true,
+    "action_observed": true,
+    "audible": true,
+    "max_audible_ms": 3000
+  },
+  "sessions": [
+    {
+      "id": "demo_a",
+      "platform": "satellite_a",
+      "scenario": "lamp_on",
+      "clock": "relative_monotonic",
+      "events": [
+        {
+          "stage": "request",
+          "at_ms": 0,
+          "origin": "pipeline"
+        },
+        {
+          "stage": "intent_end",
+          "at_ms": 500,
+          "origin": "pipeline"
+        },
+        {
+          "stage": "tts_ready",
+          "at_ms": 800,
+          "origin": "pipeline"
+        },
+        {
+          "stage": "protocol_end",
+          "at_ms": 900,
+          "origin": "pipeline"
+        }
+      ],
+      "checks": {
+        "intent_correct": {
+          "result": "pass",
+          "method": "intent_assertion"
+        },
+        "action_observed": {
+          "result": "pass",
+          "method": "ha_state"
+        },
+        "audible": {
+          "result": "unknown",
+          "method": "none"
+        }
+      }
+    }
+  ]
+}
