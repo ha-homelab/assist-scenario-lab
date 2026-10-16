@@ -1,0 +1,7 @@
+include README*.md LICENSE CHANGELOG.md SECURITY.md CONTRIBUTING.md version
+recursive-include docs *.md *.svg
+recursive-include wiki *.md
+recursive-include examples *.json
+recursive-include assets *.svg *.html *.png
+recursive-include tests *.py
+recursive-include tools *.py
