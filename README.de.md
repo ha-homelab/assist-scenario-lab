@@ -8,6 +8,11 @@ Lokale Auswertung aufgezeichneter Home-Assistant-Sprachabläufe. Ein abgeschloss
 
 ![Drei Nachweisebenen](assets/evidence-layers.svg)
 
+
+[![Synthetischer Bericht zu Sprachszenarien in Perspektive](assets/report-hero.png)](assets/report-preview.png)
+
+Der echte HTML-Bericht aus den synthetischen Beispielen des Projekts, keine gemessene Geräteleistung. Ein Klick öffnet das unveränderte Original.
+
 ## Installation und Beispiel
 
 Python 3.11 oder neuer, im ausgecheckten Projekt:
