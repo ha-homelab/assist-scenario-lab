@@ -8,6 +8,11 @@ Evaluate recorded Home Assistant voice sessions without mistaking a completed AP
 
 **Status: initial tested release, 0.1.0. All bundled timings are synthetic.** No satellite has been physically benchmarked by this release. Recorded observations are declarations; `evidence_verified` is always false.
 
+[![Synthetic voice scenario report in perspective](assets/report-hero.png)](assets/report-preview.png)
+
+The real HTML report rendered from bundled synthetic examples, not measured device
+performance. Click for the unchanged readable original.
+
 ![Three layers of evidence](assets/evidence-layers.svg)
 
 ## Install and run
@@ -62,3 +67,9 @@ See [Contributing](CONTRIBUTING.md), [Security](SECURITY.md),
 [Governance](GOVERNANCE.md), [Code of Conduct](CODE_OF_CONDUCT.md),
 [Roadmap](ROADMAP.md), [Source releases](RELEASING.md), and
 [Quality evidence](docs/quality.md).
+
+## Screenshot artwork
+
+Regenerate the perspective cover with `bash scripts/render-docs-hero.sh`
+(ImageMagick 7). It preserves the original screenshot and only adds a geometric
+projection and shadow. The linked flat image remains the readable reference.
