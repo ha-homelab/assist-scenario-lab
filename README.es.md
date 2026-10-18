@@ -8,6 +8,11 @@ Evalúa sesiones de voz registradas de Home Assistant sin confundir el final de 
 
 ![Tres niveles de evidencia](assets/evidence-layers.svg)
 
+
+[![Informe sintético de escenarios de voz en perspectiva](assets/report-hero.png)](assets/report-preview.png)
+
+El informe HTML real generado con los ejemplos sintéticos del proyecto, no una medición del rendimiento de dispositivos. Haz clic para abrir el original sin cambios.
+
 ## Instalación y uso
 
 Se necesita Python 3.11 o posterior. Desde el repositorio descargado:
