@@ -6,7 +6,7 @@
 
 Evaluate recorded Home Assistant voice sessions without mistaking a completed API call for a correct action or an audible response. The CLI reads local JSON and writes reviewable text, JSON, HTML or JUnit. It does not connect to Home Assistant or control devices.
 
-**Status: initial tested release, 0.1.0. All bundled timings are synthetic.** No satellite has been physically benchmarked by this release. Recorded observations are declarations; `evidence_verified` is always false.
+**Status: beta release, 0.1.1b1. All bundled timings are synthetic.** No satellite has been physically benchmarked by this release. Recorded observations are declarations; `evidence_verified` is always false.
 
 [![Synthetic voice scenario report in perspective](assets/report-hero.png)](assets/report-preview.png)
 
