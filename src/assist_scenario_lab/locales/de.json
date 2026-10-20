@@ -57,5 +57,6 @@
   "reason_action_observed": "Aktionsbeobachtung",
   "reason_audible": "Hörbare Antwort",
   "reason_audible_latency_unknown": "Hörbarer Zeitpunkt fehlt",
-  "reason_audible_latency_exceeded": "Hörbare Latenz überschritten"
+  "reason_audible_latency_exceeded": "Hörbare Latenz überschritten",
+  "unsupported_platform": "Sicheres Laden von Dateien erfordert O_NOFOLLOW und O_NONBLOCK im Betriebssystem."
 }

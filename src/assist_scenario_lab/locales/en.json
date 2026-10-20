@@ -57,5 +57,6 @@
   "reason_action_observed": "Action observation",
   "reason_audible": "Audible response",
   "reason_audible_latency_unknown": "Audible timing missing",
-  "reason_audible_latency_exceeded": "Audible latency exceeded"
+  "reason_audible_latency_exceeded": "Audible latency exceeded",
+  "unsupported_platform": "Safe file loading requires OS support for O_NOFOLLOW and O_NONBLOCK."
 }

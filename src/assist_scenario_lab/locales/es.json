@@ -57,5 +57,6 @@
   "reason_action_observed": "Observación de la acción",
   "reason_audible": "Respuesta audible",
   "reason_audible_latency_unknown": "Falta tiempo audible",
-  "reason_audible_latency_exceeded": "Latencia audible excedida"
+  "reason_audible_latency_exceeded": "Latencia audible excedida",
+  "unsupported_platform": "La carga segura de archivos requiere O_NOFOLLOW y O_NONBLOCK en el sistema operativo."
 }

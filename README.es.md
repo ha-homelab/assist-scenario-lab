@@ -4,7 +4,7 @@
 
 Evalúa sesiones de voz registradas de Home Assistant sin confundir el final de una llamada API con una acción correcta o una respuesta audible. Lee JSON local y genera texto, JSON, HTML o JUnit. No se conecta a Home Assistant ni controla dispositivos.
 
-**Versión beta: 0.1.1b1. Todos los tiempos incluidos son sintéticos.** Esta versión no ha comparado altavoces físicamente. Las observaciones son declaraciones del archivo; `evidence_verified` siempre es false.
+**Versión beta: 0.1.1b2. Todos los tiempos incluidos son sintéticos.** Esta versión no ha comparado altavoces físicamente. Las observaciones son declaraciones del archivo; `evidence_verified` siempre es false.
 
 ![Tres niveles de evidencia](assets/evidence-layers.svg)
 
@@ -16,6 +16,8 @@ El informe HTML real generado con los ejemplos sintéticos del proyecto, no una 
 ## Instalación y uso
 
 Se necesita Python 3.11 o posterior. Desde el repositorio descargado:
+
+La carga de archivos requiere los indicadores del sistema operativo `O_NOFOLLOW` y `O_NONBLOCK`, disponibles en Linux y macOS. Si falta cualquiera, la CLI termina con código 2 y `unsupported_platform` antes de abrir la entrada. Las API de Python para evaluar e importar datos en memoria no requieren estos indicadores.
 
 ```sh
 python3 -m venv .venv

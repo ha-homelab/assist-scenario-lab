@@ -57,5 +57,6 @@
   "reason_action_observed": "Наблюдение действия",
   "reason_audible": "Слышимый ответ",
   "reason_audible_latency_unknown": "Нет времени слышимого ответа",
-  "reason_audible_latency_exceeded": "Превышена задержка звука"
+  "reason_audible_latency_exceeded": "Превышена задержка звука",
+  "unsupported_platform": "Для безопасной загрузки файлов нужна поддержка O_NOFOLLOW и O_NONBLOCK в ОС."
 }

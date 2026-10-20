@@ -4,6 +4,10 @@
 
 No pending changes.
 
+## 0.1.1b2 — 2026-10-20
+
+- Refuse file input before opening it when the OS lacks `O_NOFOLLOW` or `O_NONBLOCK`, preserving the documented symlink/FIFO protections. Report `unsupported_platform` with CLI exit 2, and document the capability requirement in all supported languages.
+
 ## 0.1.1b1 — 2026-10-20
 
 - Publish the first GitHub beta packages with matching source/package versions and SHA-256 checksums.

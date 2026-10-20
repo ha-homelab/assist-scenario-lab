@@ -4,6 +4,8 @@
 
 Install from a checkout with `python3 -m pip install .` in a virtual environment. Python 3.11+ is supported. There are no runtime dependencies beyond Python. `assist-lab --help --lang en` lists commands; `ru`, `de` and `es` also work. The module entry point is `python3 -m assist_scenario_lab`.
 
+File loading requires the OS flags `O_NOFOLLOW` and `O_NONBLOCK`, available on Linux and macOS. Without either, the CLI returns exit 2 with `unsupported_platform` before opening input. The in-memory Python evaluation and import APIs do not require these flags.
+
 This is an offline evaluator, not a satellite firmware, acoustic detector, live collector, HA integration or complete benchmark. Run actual product UAT with the appropriate firmware tools. Supply the resulting bounded evidence to this tool only after reviewing privacy.
 
 ## Canonical input
@@ -46,6 +48,7 @@ Define an expected intent and target before running a trial. Specify the start e
 - `stage`: a stage is unknown or duplicated; check whether two runs were concatenated.
 - `audible_origin` / `conflicting_audible`: playback metadata cannot stand in for hearing sound.
 - Exit 3 after a successful API: expected until required observations are recorded.
+- `unsupported_platform`: the OS lacks `O_NOFOLLOW` or `O_NONBLOCK`; use an environment that provides both (Linux or macOS). Input is refused before opening it, rather than weakening symlink or FIFO checks.
 - `file_size_type`: regular UTF-8 JSON only, at most 2 MiB. Directories, FIFOs and final-component symlinks are rejected. Parent directory symlinks are not a sandbox boundary.
 - `number`: no negative, non-finite, boolean or over-12-hour timestamps.
 
