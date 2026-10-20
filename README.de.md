@@ -4,7 +4,7 @@
 
 Lokale Auswertung aufgezeichneter Home-Assistant-Sprachabläufe. Ein abgeschlossener API-Aufruf, die richtige Aktion und eine hörbare Antwort werden getrennt bewertet. Das Werkzeug steuert keine Geräte und verbindet sich nicht mit Home Assistant.
 
-**Erste getestete Version: 0.1.0. Alle mitgelieferten Messwerte sind synthetisch.** Es liegt kein physischer Lautsprechervergleich vor. Eingetragene Beobachtungen werden nicht unabhängig bestätigt; `evidence_verified` bleibt false.
+**Betaversion: 0.1.1b1. Alle mitgelieferten Messwerte sind synthetisch.** Es liegt kein physischer Lautsprechervergleich vor. Eingetragene Beobachtungen werden nicht unabhängig bestätigt; `evidence_verified` bleibt false.
 
 ![Drei Nachweisebenen](assets/evidence-layers.svg)
 

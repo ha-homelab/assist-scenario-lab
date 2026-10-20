@@ -4,7 +4,7 @@
 
 Evalúa sesiones de voz registradas de Home Assistant sin confundir el final de una llamada API con una acción correcta o una respuesta audible. Lee JSON local y genera texto, JSON, HTML o JUnit. No se conecta a Home Assistant ni controla dispositivos.
 
-**Primera versión probada: 0.1.0. Todos los tiempos incluidos son sintéticos.** Esta versión no ha comparado altavoces físicamente. Las observaciones son declaraciones del archivo; `evidence_verified` siempre es false.
+**Versión beta: 0.1.1b1. Todos los tiempos incluidos son sintéticos.** Esta versión no ha comparado altavoces físicamente. Las observaciones son declaraciones del archivo; `evidence_verified` siempre es false.
 
 ![Tres niveles de evidencia](assets/evidence-layers.svg)
 
