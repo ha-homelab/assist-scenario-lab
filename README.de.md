@@ -4,7 +4,7 @@
 
 Lokale Auswertung aufgezeichneter Home-Assistant-Sprachabläufe. Ein abgeschlossener API-Aufruf, die richtige Aktion und eine hörbare Antwort werden getrennt bewertet. Das Werkzeug steuert keine Geräte und verbindet sich nicht mit Home Assistant.
 
-**Betaversion: 0.1.1b1. Alle mitgelieferten Messwerte sind synthetisch.** Es liegt kein physischer Lautsprechervergleich vor. Eingetragene Beobachtungen werden nicht unabhängig bestätigt; `evidence_verified` bleibt false.
+**Betaversion: 0.1.1b2. Alle mitgelieferten Messwerte sind synthetisch.** Es liegt kein physischer Lautsprechervergleich vor. Eingetragene Beobachtungen werden nicht unabhängig bestätigt; `evidence_verified` bleibt false.
 
 ![Drei Nachweisebenen](assets/evidence-layers.svg)
 
@@ -16,6 +16,8 @@ Der echte HTML-Bericht aus den synthetischen Beispielen des Projekts, keine geme
 ## Installation und Beispiel
 
 Python 3.11 oder neuer, im ausgecheckten Projekt:
+
+Das Laden von Dateien erfordert die Betriebssystem-Flags `O_NOFOLLOW` und `O_NONBLOCK`, die unter Linux und macOS verfügbar sind. Fehlt eines davon, beendet sich die CLI vor dem Öffnen der Eingabe mit Exit-Code 2 und `unsupported_platform`. Die Python-APIs zur Auswertung und zum Import von Daten im Speicher benötigen diese Flags nicht.
 
 ```sh
 python3 -m venv .venv

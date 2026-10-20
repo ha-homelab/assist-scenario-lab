@@ -3,8 +3,10 @@ import io
 import json
 import os
 from pathlib import Path
+from types import SimpleNamespace
 import tempfile
 import unittest
+from unittest import mock
 from contextlib import redirect_stderr, redirect_stdout
 from xml.etree import ElementTree as ET
 
@@ -125,6 +127,27 @@ class EvaluationTests(unittest.TestCase):
 
 
 class InputTests(unittest.TestCase):
+    def test_missing_or_empty_open_flags_rejected_before_open(self):
+        with tempfile.TemporaryDirectory() as folder:
+            regular = Path(folder) / "input.json"
+            regular.write_text("{}")
+            for flag in ("O_NOFOLLOW", "O_NONBLOCK"):
+                for missing in (True, False):
+                    file_os = SimpleNamespace(**vars(os))
+                    file_os.open = mock.Mock(wraps=os.open)
+                    if missing:
+                        delattr(file_os, flag)
+                    else:
+                        setattr(file_os, flag, 0)
+                    with (
+                        self.subTest(flag=flag, missing=missing),
+                        mock.patch("assist_scenario_lab.core.os", file_os),
+                    ):
+                        with self.assertRaises(InputError) as caught:
+                            load_json(regular)
+                        self.assertEqual(caught.exception.code, "unsupported_platform")
+                        file_os.open.assert_not_called()
+
     def test_invalid_json_and_duplicate_keys(self):
         with tempfile.TemporaryDirectory() as folder:
             p = Path(folder) / "input.json"
@@ -200,6 +223,25 @@ class CliTests(unittest.TestCase):
                 code,
             )
         self.assertEqual(self.invoke(["evaluate", "does-not-exist"])[0], 2)
+
+    def test_unsupported_platform_reports_error_without_output(self):
+        file_os = SimpleNamespace(**vars(os))
+        file_os.O_NOFOLLOW = 0
+        with mock.patch("assist_scenario_lab.core.os", file_os):
+            for args in (
+                ["evaluate", str(ROOT / "examples/synthetic-pass.json")],
+                [
+                    "import-ha", str(ROOT / "examples/ha-events.synthetic.json"),
+                    "--session", "test", "--platform", "test",
+                ],
+            ):
+                with self.subTest(command=args[0]):
+                    code, out, err = self.invoke(args)
+                    self.assertEqual(code, 2)
+                    self.assertEqual(out, "")
+                    self.assertIn("[unsupported_platform]", err)
+                    self.assertNotIn(args[1], err)
+            self.assertEqual(self.invoke(["--help"])[0], 0)
 
     def test_locales_keys_and_commands(self):
         for lang in LANGUAGES:

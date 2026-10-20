@@ -6,7 +6,7 @@
 
 Evaluate recorded Home Assistant voice sessions without mistaking a completed API call for a correct action or an audible response. The CLI reads local JSON and writes reviewable text, JSON, HTML or JUnit. It does not connect to Home Assistant or control devices.
 
-**Status: beta release, 0.1.1b1. All bundled timings are synthetic.** No satellite has been physically benchmarked by this release. Recorded observations are declarations; `evidence_verified` is always false.
+**Status: beta release, 0.1.1b2. All bundled timings are synthetic.** No satellite has been physically benchmarked by this release. Recorded observations are declarations; `evidence_verified` is always false.
 
 [![Synthetic voice scenario report in perspective](assets/report-hero.png)](assets/report-preview.png)
 
@@ -18,6 +18,8 @@ performance. Click for the unchanged readable original.
 ## Install and run
 
 Requires Python 3.11 or newer. From this checkout:
+
+File loading requires the OS flags `O_NOFOLLOW` and `O_NONBLOCK`, available on Linux and macOS. Without either, the CLI returns exit 2 with `unsupported_platform` before opening input. The in-memory Python evaluation and import APIs do not require these flags.
 
 ```sh
 python3 -m venv .venv

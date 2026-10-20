@@ -78,8 +78,12 @@ def _pairs(pairs):
 
 
 def load_json(path: str | Path) -> Any:
-    """Open the requested regular file without following its final symlink."""
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    """Open a regular file only when atomic no-follow/nonblocking flags exist."""
+    nofollow = getattr(os, "O_NOFOLLOW", 0)
+    nonblock = getattr(os, "O_NONBLOCK", 0)
+    if not nofollow or not nonblock:
+        fail("unsupported_platform", "$")
+    flags = os.O_RDONLY | nofollow | nonblock
     try:
         fd = os.open(path, flags)
         with os.fdopen(fd, "rb") as handle:
