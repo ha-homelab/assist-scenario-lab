@@ -12,11 +12,11 @@ def wiki_path(code):
 
 
 def render_wiki_guides(root):
-    catalog = json.loads((root / "docs/languages.json").read_text())
+    catalog = json.loads((root / "docs/languages.json").read_text(encoding="utf-8"))
     pages = {}
     for item in catalog:
         code = item["code"]
-        text = (root / "docs" / code / "guide.md").read_text()
+        text = (root / "docs" / code / "guide.md").read_text(encoding="utf-8")
         for language in catalog:
             text = text.replace(
                 'href="../' + language["code"] + '/guide.md"',
@@ -41,10 +41,10 @@ def main():
     for relative, expected in render_wiki_guides(root).items():
         path = root / relative
         if args.check:
-            if not path.is_file() or path.read_text() != expected:
+            if not path.is_file() or path.read_text(encoding="utf-8") != expected:
                 stale.append(relative.as_posix())
         else:
-            path.write_text(expected)
+            path.write_text(expected, encoding="utf-8")
     if stale:
         raise SystemExit(
             "Stale wiki guides; run tools/sync_wiki_guides.py: " + ", ".join(stale)

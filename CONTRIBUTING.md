@@ -4,7 +4,7 @@ Use Python 3.11+, install editable with `python3 -m pip install -e .`, run `pyth
 
 ## Translation coverage
 
-English, Russian, German and Spanish catalogs cover CLI help, diagnostics and HTML/text labels. All four have runnable README introductions. Full technical guides and wiki reference pages are English/Russian. Machine keys and codes deliberately remain English. Add every new catalog key to all four files; tests enforce key parity. Keep examples identical across languages and disclose untranslated sections. Native-speaker review is welcome; no professional translation certification is claimed.
+English, Russian, German and Spanish catalogs cover CLI help, diagnostics and HTML/text labels. All four have runnable README introductions. Full technical guides and their wiki mirrors are available in 24 languages; see [Maintaining guide translations](docs/translations.md). Machine keys and codes deliberately remain English. Add every new catalog key to all four files; tests enforce key parity. Keep examples identical across languages and disclose untranslated sections. Native-speaker review is welcome; no professional translation certification is claimed.
 
 ## Privacy and evidence
 
@@ -12,7 +12,7 @@ Use invented identifiers and synthetic trials in fixtures. Do not upload raw rec
 
 ## Documentation
 
-`docs/en/guide.md` and `docs/ru/guide.md` are canonical. Their wiki copies replace image paths with public URLs. Keep both synchronized. SVGs come from `tools/render_docs.py`; edit the generator, regenerate, and review the image. MIT applies to original code, docs and diagrams.
+Edit the English source in `docs/en/guide.md` and keep the complete guides in all 24 `docs/<language>/guide.md` directories synchronized. Follow [Maintaining guide translations](docs/translations.md) for review, source-digest updates and validation. Generate their wiki mirrors with `python3 tools/sync_wiki_guides.py`; the script adjusts navigation and image URLs for the wiki. SVGs come from `tools/render_docs.py`; edit the generator, regenerate, and review the image. MIT applies to original code, docs and diagrams.
 
 
 ## Feedback and review
