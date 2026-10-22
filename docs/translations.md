@@ -17,8 +17,9 @@ containers so GitHub renders the enclosed Markdown.
 
 After translation review, update the English digest in
 [`translations.json`](translations.json). It is SHA-256 of the UTF-8 source with
-the language-navigation block removed, runs of three or more newlines reduced
-to two, and surrounding whitespace stripped. A changed English source therefore
+the language-navigation block and its adjacent newlines replaced by one blank
+line, then surrounding whitespace stripped. All other whitespace, including
+blank lines inside executable examples, remains significant. A changed English source therefore
 cannot silently leave the translation set stale.
 
 The checked-in wiki guides are generated mirrors, not separately maintained

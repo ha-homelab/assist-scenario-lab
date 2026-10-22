@@ -59,7 +59,7 @@ for path in paths:
             )
 # Full guide coverage is independent of the four runtime/README languages.
 NAV = re.compile(
-    r"<!-- language-navigation:start -->.*?<!-- language-navigation:end -->", re.S
+    r"\n*<!-- language-navigation:start -->.*?<!-- language-navigation:end -->\n*", re.S
 )
 FENCE = re.compile(r"^```[^\n]*\n.*?^```", re.M | re.S)
 LINK = re.compile(r"!?\[[^\]]*\]\(([^\s)]+)(?:\s+\"[^\"]*\")?\)")
@@ -69,7 +69,8 @@ EXPECTED = set(
 
 
 def content(text):
-    return re.sub(r"\n{3,}", "\n\n", NAV.sub("", text)).strip()
+    """Ignore navigation formatting without altering executable example bytes."""
+    return NAV.sub("\n\n", text).strip()
 
 
 def structure(text):
