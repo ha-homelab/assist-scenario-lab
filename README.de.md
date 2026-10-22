@@ -34,7 +34,7 @@ Der letzte Aufruf liefert absichtlich **3**: Der Protokollablauf ist beendet, di
 
 Strenge begrenzte JSON-Eingaben, Herkunft der Beobachtung, Latenzgrenzen sowie Text-, JSON-, HTML- und JUnit-Berichte. Ein Offline-Adapter übernimmt die Ereignisse eines HA-Laufs und verwirft sämtliche Nutzdaten, einschließlich Transkripten und Audio-Tokens. Zusammenfassungen trennen Plattform, Szenario, Zeitbasis und Beobachtungsmethode. p95 erscheint erst ab 20 Werten; das ist keine statistische Vertrauensgarantie.
 
-Die CLI, Hilfe und Berichte unterstützen Deutsch, Englisch, Russisch und Spanisch. Maschinencodes bleiben sprachunabhängig. Die vollständigen technischen Anleitungen sind derzeit auf [Englisch](docs/en/guide.md) und [Russisch](docs/ru/guide.md) verfügbar; diese deutsche README ist ein eigenständiger Einstieg, keine vollständige Übersetzung der Referenz.
+Die CLI, Hilfe und Berichte unterstützen Deutsch, Englisch, Russisch und Spanisch. Maschinencodes bleiben sprachunabhängig. Die vollständigen technischen Anleitungen sind in 24 Sprachen verfügbar, darunter [Deutsch](docs/de/guide.md). Der [Sprachindex und die Pflegehinweise](docs/translations.md) beschreiben den gesamten Umfang; diese deutsche README bleibt ein eigenständiger Einstieg.
 
 ![Synthetische Latenzen, kein Produkttest](assets/synthetic-latency.svg)
 

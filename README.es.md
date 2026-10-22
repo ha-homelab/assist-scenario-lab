@@ -34,7 +34,7 @@ El último comando termina intencionadamente con **3**: finalizó el protocolo, 
 
 Esquema estricto con límites de tamaño, métodos de observación explícitos y umbrales de latencia. El adaptador sin conexión importa los eventos de una ejecución de HA y descarta todos sus datos, incluidos textos y tokens de audio. Los resúmenes separan plataforma, escenario, reloj y método. p95 requiere al menos 20 observaciones; es un umbral de visualización, no una garantía de confianza estadística.
 
-La CLI, ayuda e informes están disponibles en español, inglés, ruso y alemán. Los códigos JSON no cambian con el idioma. La referencia técnica completa está en [inglés](docs/en/guide.md) y [ruso](docs/ru/guide.md); este README español ofrece una introducción funcional, no una traducción completa de la referencia.
+La CLI, ayuda e informes están disponibles en español, inglés, ruso y alemán. Los códigos JSON no cambian con el idioma. La referencia técnica completa está disponible en 24 idiomas, incluido el [español](docs/es/guide.md). El [índice de idiomas y las instrucciones de mantenimiento](docs/translations.md) describen toda la cobertura; este README español sigue siendo una introducción funcional.
 
 ![Latencias sintéticas, no comparación de productos](assets/synthetic-latency.svg)
 
