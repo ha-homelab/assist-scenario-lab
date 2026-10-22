@@ -48,6 +48,9 @@ These example values describe fictitious `satellite_a` and `satellite_b`. They d
 
 ## Documentation
 
+The full guide and its checked-in wiki mirror are available in 24 languages.
+Each guide has language navigation; see [translation maintenance](docs/translations.md).
+
 - [English guide](docs/en/guide.md): input contract, HA adapter, interpretation and troubleshooting.
 - [Русское руководство](docs/ru/guide.md).
 - [Wiki source](wiki/Home.md) and [published wiki](https://github.com/ha-homelab/assist-scenario-lab/wiki).
