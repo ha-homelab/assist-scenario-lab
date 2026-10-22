@@ -1,5 +1,34 @@
 # Recorded voice scenario evaluation
 
+<!-- language-navigation:start -->
+<p dir="ltr">
+<a href="Guide.md" lang="en" dir="ltr">English</a> ·
+<a href="Guide-ar.md" lang="ar" dir="rtl">العربية</a> ·
+<a href="Guide-bn.md" lang="bn" dir="ltr">বাংলা</a> ·
+<a href="Guide-cs.md" lang="cs" dir="ltr">Čeština</a> ·
+<a href="Guide-de.md" lang="de" dir="ltr">Deutsch</a> ·
+<a href="Guide-es.md" lang="es" dir="ltr">Español</a> ·
+<a href="Guide-fa.md" lang="fa" dir="rtl">فارسی</a> ·
+<a href="Guide-fr.md" lang="fr" dir="ltr">Français</a> ·
+<a href="Guide-he.md" lang="he" dir="rtl">עברית</a> ·
+<a href="Guide-hi.md" lang="hi" dir="ltr">हिन्दी</a> ·
+<a href="Guide-id.md" lang="id" dir="ltr">Bahasa Indonesia</a> ·
+<a href="Guide-it.md" lang="it" dir="ltr">Italiano</a> ·
+<a href="Guide-ja.md" lang="ja" dir="ltr">日本語</a> ·
+<a href="Guide-ko.md" lang="ko" dir="ltr">한국어</a> ·
+<a href="Guide-nl.md" lang="nl" dir="ltr">Nederlands</a> ·
+<a href="Guide-pl.md" lang="pl" dir="ltr">Polski</a> ·
+<a href="Guide-pt.md" lang="pt" dir="ltr">Português</a> ·
+<a href="Guide-RU.md" lang="ru" dir="ltr">Русский</a> ·
+<a href="Guide-th.md" lang="th" dir="ltr">ไทย</a> ·
+<a href="Guide-tr.md" lang="tr" dir="ltr">Türkçe</a> ·
+<a href="Guide-uk.md" lang="uk" dir="ltr">Українська</a> ·
+<a href="Guide-vi.md" lang="vi" dir="ltr">Tiếng Việt</a> ·
+<a href="Guide-zh-Hans.md" lang="zh-Hans" dir="ltr">简体中文</a> ·
+<a href="Guide-zh-Hant.md" lang="zh-Hant" dir="ltr">繁體中文</a>
+</p>
+<!-- language-navigation:end -->
+
 ## Installation and boundaries
 
 Install from a checkout with `python3 -m pip install .` in a virtual environment. Python 3.11+ is supported. There are no runtime dependencies beyond Python. `assist-lab --help --lang en` lists commands; `ru`, `de` and `es` also work. The module entry point is `python3 -m assist_scenario_lab`.
@@ -58,6 +87,6 @@ Errors print a translated summary and stable code, not source contents or local 
 
 ![Offline flow](https://raw.githubusercontent.com/ha-homelab/assist-scenario-lab/main/assets/architecture.svg)
 
-`core.py` handles pure validation/import/evaluation; `cli.py` renders formats; `locales/*.json` contains four catalogs. Tests require catalog key parity. Machine keys and diagnostic codes are not translated. Full guides are English/Russian; German/Spanish provide CLI and README coverage. Contribute additional reference translations with parity tests and reviewed examples.
+`core.py` handles pure validation/import/evaluation; `cli.py` renders formats; `locales/*.json` contains four catalogs. Tests require catalog key parity. Machine keys and diagnostic codes are not translated. Full guides cover the 24 ha-homelab documentation languages; CLI and README coverage remains English, Russian, German and Spanish. Contribute additional reference translations with parity tests and reviewed examples.
 
 Protocol mapping checked against [Home Assistant Assist documentation](https://developers.home-assistant.io/docs/voice/pipelines/) and [HA 2026.10.0 event models](https://github.com/home-assistant/core/blob/2026.10.0/homeassistant/components/assist_pipeline/models.py). Satellite lifecycle is documented in [the official entity guide](https://developers.home-assistant.io/docs/core/entity/assist-satellite/). These upstream APIs do not promise acoustic verification; separating it here is a design decision.
