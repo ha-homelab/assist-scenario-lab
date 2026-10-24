@@ -4,6 +4,11 @@
 
 No pending changes.
 
+## 0.1.1 - 2026-10-24
+
+- Promote the checked 0.1.1 release candidate after source, wheel and synthetic-example validation.
+- Keep its runtime behavior, dependency pins and documented evidence limits unchanged.
+
 ## 0.1.1rc1 — 2026-10-24
 
 - Package the complete 24-language guides and checked-in wiki sources.
