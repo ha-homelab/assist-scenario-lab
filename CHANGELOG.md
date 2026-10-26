@@ -4,6 +4,17 @@
 
 No pending changes.
 
+## 0.1.1 - 2026-10-24
+
+- Promote the checked 0.1.1 release candidate after source, wheel and synthetic-example validation.
+- Keep its runtime behavior, dependency pins and documented evidence limits unchanged.
+
+## 0.1.1rc1 — 2026-10-24
+
+- Package the complete 24-language guides and checked-in wiki sources.
+- Preserve executable examples and source digests in documentation parity checks; read multilingual files explicitly as UTF-8.
+- Retain the beta runtime behavior, dependency pins and offline/synthetic acceptance boundaries.
+
 ## 0.1.1b2 — 2026-10-20
 
 - Refuse file input before opening it when the OS lacks `O_NOFOLLOW` or `O_NONBLOCK`, preserving the documented symlink/FIFO protections. Report `unsupported_platform` with CLI exit 2, and document the capability requirement in all supported languages.
