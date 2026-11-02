@@ -58,8 +58,12 @@ Each guide has language navigation; see [translation maintenance](docs/translati
 
 ## Development
 
+Use the [locked CI environment](CONTRIBUTING.md#reproduce-the-ci-environment)
+for development dependencies and reproducible source/wheel builds.
+
 ```sh
-python3 -m pip install -e .
+python3 -m pip install --only-binary=:all: --require-hashes -r requirements-ci.txt
+python3 -m pip install --no-index --no-deps --no-build-isolation -e .
 python3 -m unittest discover -s tests -v
 python3 tools/render_docs.py
 ```
