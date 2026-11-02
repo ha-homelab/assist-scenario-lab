@@ -7,3 +7,4 @@ recursive-include tests *.py
 recursive-include tools *.py
 
 include GOVERNANCE.md CODE_OF_CONDUCT.md ROADMAP.md RELEASING.md
+include requirements-ci.in requirements-ci.txt
