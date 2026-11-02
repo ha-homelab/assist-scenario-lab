@@ -1,6 +1,6 @@
 # Contributing
 
-Use Python 3.11+, install editable with `python3 -m pip install -e .`, run `python3 -m unittest discover -s tests -v` and `python3 tools/render_docs.py`. Submit a pull request; preserve synthetic labels and stable schema/exit codes.
+Use Python 3.11+, use the locked editable install below, run `python3 -m unittest discover -s tests -v` and `python3 tools/render_docs.py`. Submit a pull request; preserve synthetic labels and stable schema/exit codes.
 
 ## Translation coverage
 
@@ -14,6 +14,41 @@ Use invented identifiers and synthetic trials in fixtures. Do not upload raw rec
 
 Edit the English source in `docs/en/guide.md` and keep the complete guides in all 24 `docs/<language>/guide.md` directories synchronized. Follow [Maintaining guide translations](docs/translations.md) for review, source-digest updates and validation. Generate their wiki mirrors with `python3 tools/sync_wiki_guides.py`; the script adjusts navigation and image URLs for the wiki. SVGs come from `tools/render_docs.py`; edit the generator, regenerate, and review the image. MIT applies to original code, docs and diagrams.
 
+
+## Reproduce the CI environment
+
+CI uses Python 3.12. In an activated Python 3.12 virtual environment, install the
+committed hash lock before installing this checkout:
+
+```sh
+python -m pip install --only-binary=:all: --require-hashes -r requirements-ci.txt
+python -m pip install --no-index --no-deps --no-build-isolation -e .
+python -m pip check
+python -m pytest -q
+python -m ruff check --select E4,E7,E9,F src tests tools
+python tools/check_docs.py
+python -m build --no-isolation
+```
+
+`requirements-ci.txt` includes the runtime requirements from `pyproject.toml`,
+the development tools from `requirements-ci.in`, and the exact build backend.
+The local package and source/wheel builds cannot silently resolve another build
+environment. CI installs the checkout non-editably; editable installation above
+is for local development only.
+
+When changing dependencies, keep `setuptools` in `requirements-ci.in` aligned
+with `[build-system].requires`. Regenerate with uv 0.12.7 and review every version
+and hash change before running the commands above:
+
+```sh
+uv pip compile pyproject.toml requirements-ci.in --universal --python-version 3.12 --generate-hashes --output-file requirements-ci.txt
+```
+
+The tests compare each reviewed tool pin with both the lock and the installed
+environment, so changing an input requires refreshing and installing the lock.
+Commit the inputs and generated lock together. Do not remove hash verification,
+allow dependency resolution in the local install, or restore build isolation to
+work around an incomplete lock.
 
 ## Feedback and review
 
