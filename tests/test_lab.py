@@ -6,6 +6,8 @@ from pathlib import Path
 from types import SimpleNamespace
 import tempfile
 import unittest
+from datetime import datetime, timedelta, timezone
+from itertools import product
 from unittest import mock
 from contextlib import redirect_stderr, redirect_stdout
 from xml.etree import ElementTree as ET
@@ -24,6 +26,137 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def sample():
     return json.loads((ROOT / "examples/synthetic-pass.json").read_text())
+
+
+class GeneratedInputTests(unittest.TestCase):
+    """Finite, reproducible API checks; no collector or physical evidence."""
+
+    def test_nested_invalid_shapes_raise_input_error_without_mutation(self):
+        seed = sample()
+
+        def paths(value, prefix=()):
+            yield prefix
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    yield from paths(child, prefix + (key,))
+            elif isinstance(value, list):
+                for index, child in enumerate(value):
+                    yield from paths(child, prefix + (index,))
+
+        for path, replacement in product(paths(seed), (None, [], {})):
+            # Empty requirements intentionally permits a protocol-only policy.
+            if path == ("requirements",) and replacement == {}:
+                continue
+            document = copy.deepcopy(seed)
+            if path:
+                parent = document
+                for part in path[:-1]:
+                    parent = parent[part]
+                parent[path[-1]] = copy.deepcopy(replacement)
+            else:
+                document = copy.deepcopy(replacement)
+            before = copy.deepcopy(document)
+            with self.subTest(path=path, replacement=replacement):
+                with self.assertRaises(InputError) as first:
+                    evaluate(document)
+                with self.assertRaises(InputError) as second:
+                    evaluate(document)
+                self.assertEqual(
+                    (first.exception.code, first.exception.path),
+                    (second.exception.code, second.exception.path),
+                )
+                self.assertEqual(document, before)
+
+    def test_generated_check_results_preserve_evidence_and_error_dominance(self):
+        names = ("intent_correct", "action_observed", "audible")
+        for outcomes, synthetic in product(
+            product(("pass", "fail", "unknown"), repeat=3), (False, True)
+        ):
+            document = sample()
+            document["synthetic"] = synthetic
+            document["requirements"] = dict.fromkeys(names, True)
+            session = document["sessions"][0]
+            document["sessions"] = [session]
+            session["events"] = [
+                {"stage": "request", "at_ms": 0, "origin": "pipeline"},
+                {"stage": "protocol_end", "at_ms": 1, "origin": "pipeline"},
+            ]
+            session["checks"] = {
+                name: {
+                    "result": outcome,
+                    "method": "none" if outcome == "unknown" else "operator",
+                }
+                for name, outcome in zip(names, outcomes)
+            }
+            before = copy.deepcopy(document)
+            with self.subTest(outcomes=outcomes, synthetic=synthetic):
+                result = evaluate(document)
+                self.assertEqual(result, evaluate(document))
+                self.assertEqual(document, before)
+                self.assertEqual(result["schema"], "assist-scenario-lab/report/v1")
+                self.assertIs(result["synthetic"], synthetic)
+                self.assertIs(result["evidence_verified"], False)
+                expected = (
+                    "fail"
+                    if "fail" in outcomes
+                    else "incomplete"
+                    if "unknown" in outcomes
+                    else "pass"
+                )
+                self.assertEqual(result["status"], expected)
+                self.assertEqual(result["sessions"][0]["status"], expected)
+                self.assertEqual(result["sessions"][0]["protocol"], "pass")
+                self.assertEqual(result["groups"][0][expected], 1)
+                json.dumps(result, allow_nan=False)
+
+    def test_import_discards_payload_and_ignored_events_across_timezones(self):
+        ignored = (
+            "wake_word-start",
+            "stt-start",
+            "stt-vad-start",
+            "stt-vad-end",
+            "intent-start",
+            "intent-progress",
+            "tts-start",
+        )
+        for offset, event_type, synthetic in product(
+            (-12, 0, 5.5, 14), ignored, (False, True)
+        ):
+            start = datetime(2026, 1, 1, tzinfo=timezone(timedelta(hours=offset)))
+            data = [
+                {"type": "run-start", "timestamp": start.isoformat(), "data": None},
+                {
+                    "type": "run-end",
+                    "timestamp": (start + timedelta(seconds=1)).isoformat(),
+                    "data": None,
+                },
+            ]
+            expected = import_ha(
+                data, session="generated", platform="synthetic", synthetic=synthetic
+            )
+            marker = "synthetic-payload-must-not-escape"
+            data.insert(
+                1,
+                {
+                    "type": event_type,
+                    "timestamp": (start + timedelta(milliseconds=500)).isoformat(),
+                    "data": {"text": marker, "nested": [marker, {"token": marker}]},
+                },
+            )
+            before = copy.deepcopy(data)
+            with self.subTest(
+                offset=offset, event_type=event_type, synthetic=synthetic
+            ):
+                actual = import_ha(
+                    data, session="generated", platform="synthetic", synthetic=synthetic
+                )
+                self.assertEqual(actual, expected)
+                self.assertEqual(data, before)
+                self.assertNotIn(marker, json.dumps(actual, allow_nan=False))
+                report = evaluate(actual)
+                self.assertEqual(report["status"], "incomplete")
+                self.assertIs(report["evidence_verified"], False)
+                self.assertEqual(actual["sessions"][0]["events"][-1]["at_ms"], 1000)
 
 
 class EvaluationTests(unittest.TestCase):
