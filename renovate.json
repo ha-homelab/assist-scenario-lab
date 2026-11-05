@@ -1,0 +1,88 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>victron-venus/venus-os-ci-toolkit:renovate-fleet"
+  ],
+  "enabledManagers": [
+    "github-actions",
+    "custom.regex",
+    "custom.jsonata",
+    "pep621",
+    "pip-compile",
+    "pip_requirements"
+  ],
+  "ignorePaths": [
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/fixtures/**",
+    "**/tools/browser-compatibility/**",
+    ".github/cosign/**"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "pep621",
+        "pip_requirements",
+        "pip-compile"
+      ],
+      "matchFileNames": [
+        "/^[^/]+$/"
+      ],
+      "schedule": [
+        "* * * * 1"
+      ]
+    },
+    {
+      "description": "Regenerate compiled locks with their recorded source command; avoid independent edits to inputs or output snapshots.",
+      "matchManagers": [
+        "pip_requirements"
+      ],
+      "matchFileNames": [
+        "pyproject.toml",
+        "requirements-ci.in",
+        "requirements-ci.txt"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "The pip-compile manager updates this project together with its compiled lock.",
+      "matchManagers": [
+        "pep621"
+      ],
+      "matchFileNames": [
+        "pyproject.toml"
+      ],
+      "enabled": false
+    }
+  ],
+  "pip_requirements": {
+    "managerFilePatterns": [
+      "/(^|/)([^/]*[-_])?requirements[^/]*\\.(txt|pip)$/"
+    ],
+    "ignorePaths": [
+      "**/vendor/**",
+      "**/node_modules/**",
+      "**/fixtures/**",
+      "**/tools/browser-compatibility/**",
+      ".github/cosign/**",
+      "pyproject.toml",
+      "requirements-ci.in",
+      "requirements-ci.txt"
+    ]
+  },
+  "pip-compile": {
+    "managerFilePatterns": [
+      "/^requirements\\-ci\\.txt$/"
+    ]
+  },
+  "pep621": {
+    "ignorePaths": [
+      "**/vendor/**",
+      "**/node_modules/**",
+      "**/fixtures/**",
+      "**/tools/browser-compatibility/**",
+      ".github/cosign/**",
+      "pyproject.toml"
+    ]
+  }
+}
