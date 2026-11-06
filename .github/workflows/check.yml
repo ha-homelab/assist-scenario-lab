@@ -13,7 +13,7 @@ jobs:
       force-full: false
       # README.md is the package description declared in pyproject.toml.
       required-paths: '["README.md"]'
-      documentation-paths: "[\"README.de.md\",\"README.es.md\",\"README.ru.md\",\"wiki/Guide-RU.md\",\"wiki/Guide-ar.md\",\"wiki/Guide-bn.md\",\"wiki/Guide-cs.md\",\"wiki/Guide-de.md\",\"wiki/Guide-es.md\",\"wiki/Guide-fa.md\",\"wiki/Guide-fr.md\",\"wiki/Guide-he.md\",\"wiki/Guide-hi.md\",\"wiki/Guide-id.md\",\"wiki/Guide-it.md\",\"wiki/Guide-ja.md\",\"wiki/Guide-ko.md\",\"wiki/Guide-nl.md\",\"wiki/Guide-pl.md\",\"wiki/Guide-pt.md\",\"wiki/Guide-th.md\",\"wiki/Guide-tr.md\",\"wiki/Guide-uk.md\",\"wiki/Guide-vi.md\",\"wiki/Guide-zh-Hans.md\",\"wiki/Guide-zh-Hant.md\",\"wiki/Guide.md\",\"wiki/Home.md\",\"wiki/_Sidebar.md\"]"
+      documentation-paths: "[\"GOVERNANCE.md\", \"README.de.md\", \"README.es.md\", \"README.ru.md\", \"ROADMAP.md\", \"wiki/Guide-RU.md\", \"wiki/Guide-ar.md\", \"wiki/Guide-bn.md\", \"wiki/Guide-cs.md\", \"wiki/Guide-de.md\", \"wiki/Guide-es.md\", \"wiki/Guide-fa.md\", \"wiki/Guide-fr.md\", \"wiki/Guide-he.md\", \"wiki/Guide-hi.md\", \"wiki/Guide-id.md\", \"wiki/Guide-it.md\", \"wiki/Guide-ja.md\", \"wiki/Guide-ko.md\", \"wiki/Guide-nl.md\", \"wiki/Guide-pl.md\", \"wiki/Guide-pt.md\", \"wiki/Guide-th.md\", \"wiki/Guide-tr.md\", \"wiki/Guide-uk.md\", \"wiki/Guide-vi.md\", \"wiki/Guide-zh-Hans.md\", \"wiki/Guide-zh-Hant.md\", \"wiki/Guide.md\", \"wiki/Home.md\", \"wiki/_Sidebar.md\"]"
   validation:
     needs: scope
     if: ${{ needs.scope.outputs.run == 'true' }}
