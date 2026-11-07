@@ -38,7 +38,7 @@ jobs:
        !github.event.pull_request.draft &&
        (contains(github.event.pull_request.labels.*.name, 'auto-approve') ||
         contains(github.event.pull_request.labels.*.name, 'automerge')))
-    uses: victron-venus/venus-os-ci-toolkit/.github/workflows/auto-approve-reusable.yml@f77820983e4279471224b8443980f55448183872 # main
+    uses: victron-venus/venus-os-ci-toolkit/.github/workflows/auto-approve-reusable.yml@77b0157695fb80e4d97c3ac4819c2d1db7ba96c7 # main
     with:
       pull-request-number: ${{ inputs.pull-request-number || '' }}
       expected-head: ${{ inputs.expected-head || '' }}
